@@ -11,7 +11,7 @@ on:
       test_target:
         description: 'Bazel test target'
         required: false
-        default: '//:demo_test'
+        default: ''
         type: string
 
 jobs:
