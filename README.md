@@ -161,6 +161,8 @@ SubClass pure virtual function implemented by SubObject1
 
 ### Recent Commits
 
+- `a891870` Update CI documentation to reflect test target changes
+- `04a2726` Update changelog with workflow fix
 - `a6532f9` Fix Bazel workflows: remove default test target that doesn't exist
 - `c3ba48f` Update changelog with latest commit
 - `4e5423e` Extract CI/CD documentation to separate CI.md file and update README reference
