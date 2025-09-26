@@ -8,6 +8,25 @@
 - `SubClass`: 派生类，继承自`BaseClass`，实现纯虚函数，重写虚函数。
 - `main.cpp`: 主函数，创建对象并调用函数，展示多态性。
 
+## 构建和运行
+
+### 使用CMake
+- 安装CMake 3.19+。
+- 配置：`cmake --preset release`
+- 构建：`cmake --build --preset release`
+- 测试：`ctest --preset release`
+- 运行：`./build/demo`
+
+详细请参考 [CMakePresets.md](CMakePresets.md)。
+
+### 使用Bazel
+
+- 安装Bazel或[Bazelisk](Bazelisk.md)（推荐）。
+- 构建：`bazel build //:demo`
+- 运行：`bazel run //:demo`
+
+详细请参考 [Bazel.md](Bazel.md) 和 [Bazelisk.md](Bazelisk.md)。
+
 ## 函数类型解释
 
 ### 1. 普通函数 (Normal Function)
@@ -133,3 +152,9 @@ SubClass pure virtual function implemented by SubObject1
 - **纯虚函数**：强制实现，定义接口，用于抽象设计。
 
 通过本项目，可以直观理解这些函数在继承和多态中的作用。
+
+## Changelog
+
+### Recent Commits
+- `e2a25cb` Add CMakePresets, CTest integration, and documentation updates
+- `49744ee` Initial commit: C++ class inheritance demo with CMake and Bazel build support
