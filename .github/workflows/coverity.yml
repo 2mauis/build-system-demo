@@ -1,0 +1,65 @@
+name: Coverity Static Analysis
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Build type for Coverity analysis'
+        required: true
+        default: 'Debug'
+        type: choice
+        options:
+        - Debug
+        - Release
+
+jobs:
+  coverity:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download Coverity
+      run: |
+        wget -q https://scan.coverity.com/download/linux64 --post-data "token=${{ secrets.COVERITY_TOKEN }}&project=${{ github.repository }}" -O coverity_tool.tgz
+        mkdir coverity_tool
+        tar xzf coverity_tool.tgz --strip 1 -C coverity_tool
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake ninja-build
+
+    - name: Configure CMake
+      run: |
+        mkdir build
+        cd build
+        cmake -DCMAKE_BUILD_TYPE=${{ inputs.build_type }} ..
+
+    - name: Run Coverity Analysis
+      run: |
+        export PATH=$PWD/coverity_tool/bin:$PATH
+        cd build
+        cov-build --dir cov-int make -j$(nproc)
+
+    - name: Upload results to Coverity
+      run: |
+        cd build
+        tar czf cov-int.tgz cov-int
+        curl \
+          --form token=${{ secrets.COVERITY_TOKEN }} \
+          --form email=${{ secrets.COVERITY_EMAIL }} \
+          --form file=@cov-int.tgz \
+          --form version="${{ github.sha }}" \
+          --form description="GitHub Actions build" \
+          https://scan.coverity.com/builds?project=${{ github.repository }}
+
+    - name: Upload analysis artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverity-results-${{ inputs.build_type }}
+        path: |
+          build/cov-int.tgz
+        retention-days: 30
