@@ -163,6 +163,8 @@ SubClass pure virtual function implemented by SubObject1
 
 ### Recent Commits
 
+- `4ceed06` Update AI development note to specify Copilot Agent mode with Grok Code Fast model
+- `f9246dc` Update changelog with license addition
 - `d73cb36` Add BSD-3-Clause license and note about agentic AI development
 - `ea4d704` Final changelog update with clang-tidy config
 - `7422cfa` Add .clang-tidy config file and update workflow to use it
