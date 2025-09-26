@@ -1,0 +1,42 @@
+name: Bazelisk Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Bazel target to build'
+        required: true
+        default: '//:demo'
+        type: string
+      test_target:
+        description: 'Bazel test target'
+        required: false
+        default: '//:demo_test'
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Bazelisk
+      run: |
+        curl -L https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64 -o bazelisk
+        chmod +x bazelisk
+        sudo mv bazelisk /usr/local/bin/
+
+    - name: Verify Bazelisk
+      run: |
+        bazelisk version
+
+    - name: Build
+      run: |
+        bazelisk build ${{ inputs.target }}
+
+    - name: Test
+      if: inputs.test_target != ''
+      run: |
+        bazelisk test ${{ inputs.test_target }}

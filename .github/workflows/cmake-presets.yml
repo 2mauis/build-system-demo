@@ -1,0 +1,39 @@
+name: CMakePresets Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      preset:
+        description: 'CMake Preset to use'
+        required: true
+        default: 'default'
+        type: choice
+        options:
+        - default
+        - release
+        - debug
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake ninja-build
+
+    - name: Configure with CMake Preset
+      run: |
+        cmake --preset ${{ inputs.preset }}
+
+    - name: Build
+      run: |
+        cmake --build --preset ${{ inputs.preset }}
+
+    - name: Test
+      run: |
+        ctest --preset ${{ inputs.preset }}
