@@ -1,6 +1,6 @@
 # CI/CD 指南
 
-[![English](https://img.shields.io/badge/Language-English-blue.svg)](CI_EN.md) | [中文](CI.md)
+[![English](https://img.shields.io/badge/Language-English-blue.svg)](doc/CI_EN.md) | [中文](doc/CI.md)
 
 本项目配置了GitHub Actions，支持三种构建方式的手动触发编译。
 

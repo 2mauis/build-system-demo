@@ -1,6 +1,6 @@
 # Bazel Usage and Principles
 
-[![中文](https://img.shields.io/badge/Language-中文-red.svg)](Bazel.md) | [English](Bazel_EN.md)
+[![中文](https://img.shields.io/badge/Language-中文-red.svg)](doc/Bazel.md) | [English](doc/Bazel_EN.md)
 
 ## What is Bazel?
 

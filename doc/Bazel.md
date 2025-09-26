@@ -1,6 +1,6 @@
 # Bazel 使用方式和原理
 
-[![English](https://img.shields.io/badge/Language-English-blue.svg)](Bazel_EN.md) | [中文](Bazel.md)
+[![English](https://img.shields.io/badge/Language-English-blue.svg)](doc/Bazel_EN.md) | [中文](doc/Bazel.md)
 
 ## 什么是Bazel？
 

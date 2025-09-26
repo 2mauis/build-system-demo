@@ -1,6 +1,6 @@
 # CI/CD Guide
 
-[![中文](https://img.shields.io/badge/Language-中文-red.svg)](CI.md) | [English](CI_EN.md)
+[![中文](https://img.shields.io/badge/Language-中文-red.svg)](doc/CI.md) | [English](doc/CI_EN.md)
 
 This project is configured with GitHub Actions, supporting manual triggering of compilation in three build methods.
 

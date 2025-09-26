@@ -21,15 +21,15 @@
 - 测试：`ctest --preset release`
 - 运行：`./build/demo`
 
-详细请参考 [CMakePresets.md](CMakePresets.md)。
+详细请参考 [CMakePresets.md](doc/CMakePresets.md)。
 
 ### 使用Bazel
 
-- 安装Bazel或[Bazelisk](Bazelisk.md)（推荐）。
+- 安装Bazel或[Bazelisk](doc/Bazelisk.md)（推荐）。
 - 构建：`bazel build //:demo`
 - 运行：`bazel run //:demo`
 
-详细请参考 [Bazel.md](Bazel.md) 和 [Bazelisk.md](Bazelisk.md)。
+详细请参考 [Bazel.md](doc/Bazel.md) 和 [Bazelisk.md](doc/Bazelisk.md)。
 
 ## 函数类型解释
 
@@ -159,7 +159,7 @@ SubClass pure virtual function implemented by SubObject1
 
 ## CI/CD
 
-详细的CI/CD配置和使用说明请参考 [CI.md](CI.md)。
+详细的CI/CD配置和使用说明请参考 [CI.md](doc/CI.md)。
 
 ## Changelog
 

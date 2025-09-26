@@ -1,6 +1,6 @@
 # Bazelisk User Guide
 
-[![中文](https://img.shields.io/badge/Language-中文-red.svg)](Bazelisk.md) | [English](Bazelisk_EN.md)
+[![中文](https://img.shields.io/badge/Language-中文-red.svg)](doc/Bazelisk.md) | [English](doc/Bazelisk_EN.md)
 
 ## What is Bazelisk?
 
