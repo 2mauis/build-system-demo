@@ -34,8 +34,8 @@ jobs:
     - name: Run Clang-Tidy
       run: |
         cd build
-        # Run clang-tidy on all source files
-        find ../src -name "*.cpp" -exec clang-tidy {} -p . \; || true
+        # Run clang-tidy on all source files using project config
+        find ../src -name "*.cpp" -exec clang-tidy {} -p . --config-file=../.clang-tidy \; || true
 
     - name: Upload analysis results
       uses: actions/upload-artifact@v4
