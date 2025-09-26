@@ -22,11 +22,9 @@ public:
     std::shared_ptr<BaseClass> getFromMap(const std::string& key);
 
 private:
-    class Impl {
-    public:
-        std::map<std::string, std::shared_ptr<BaseClass> > baseClassMap;
-    };
-    std::unique_ptr<Impl> pImpl;
+    // SubClass不使用自己的Impl，而是直接使用BaseClass的pImpl
+    // 但为了扩展性，我们可以添加额外的成员函数来处理SubClass特有的数据
+    std::map<std::string, std::shared_ptr<BaseClass> > baseClassMap;
 };
 
 #endif // SUBCLASS_H

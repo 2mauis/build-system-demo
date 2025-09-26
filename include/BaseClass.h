@@ -22,13 +22,16 @@ public:
     // 普通函数
     void normalFunction();
 
-private:
+protected:
     class Impl {
     public:
         Impl(const std::string& name) : name(name) {}
         std::string name;
     };
     std::unique_ptr<Impl> pImpl;
-};
+
+    // 受保护的构造函数，用于子类自定义Impl
+    BaseClass(std::unique_ptr<Impl> impl);
+};;
 
 #endif // BASECLASS_H
