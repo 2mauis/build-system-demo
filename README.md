@@ -161,6 +161,8 @@ SubClass pure virtual function implemented by SubObject1
 
 ### Recent Commits
 
+- `62fa561` Add Clang-Tidy and Coverity SCA workflows and update CI documentation
+- `21c47a0` Final changelog update
 - `a891870` Update CI documentation to reflect test target changes
 - `04a2726` Update changelog with workflow fix
 - `a6532f9` Fix Bazel workflows: remove default test target that doesn't exist
