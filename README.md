@@ -165,6 +165,8 @@ SubClass pure virtual function implemented by SubObject1
 
 ### Recent Commits
 
+- `910d92d` Add English documentation and language switch buttons to all docs
+- `c9075d5` Update changelog with AI model specification
 - `4ceed06` Update AI development note to specify Copilot Agent mode with Grok Code Fast model
 - `f9246dc` Update changelog with license addition
 - `d73cb36` Add BSD-3-Clause license and note about agentic AI development
