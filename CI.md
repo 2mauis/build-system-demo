@@ -46,14 +46,14 @@
 直接使用Bazel进行构建，支持自定义目标：
 
 - **target**：要构建的Bazel目标（默认：`//:demo`）
-- **test_target**：要运行的测试目标（可选，默认：`//:demo_test`）
+- **test_target**：要运行的测试目标（可选，默认：空，不运行测试）
 
 ### Bazelisk配置
 
 使用Bazelisk进行构建，自动管理Bazel版本：
 
 - **target**：要构建的Bazel目标（默认：`//:demo`）
-- **test_target**：要运行的测试目标（可选，默认：`//:demo_test`）
+- **test_target**：要运行的测试目标（可选，默认：空，不运行测试）
 
 ## 环境要求
 
