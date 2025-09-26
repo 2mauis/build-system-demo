@@ -163,6 +163,8 @@ SubClass pure virtual function implemented by SubObject1
 
 ### Recent Commits
 
+- `d73cb36` Add BSD-3-Clause license and note about agentic AI development
+- `ea4d704` Final changelog update with clang-tidy config
 - `7422cfa` Add .clang-tidy config file and update workflow to use it
 - `6d53654` Update changelog with new static analysis workflows
 - `62fa561` Add Clang-Tidy and Coverity SCA workflows and update CI documentation
