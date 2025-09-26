@@ -161,6 +161,7 @@ SubClass pure virtual function implemented by SubObject1
 
 ### Recent Commits
 
+- `4e5423e` Extract CI/CD documentation to separate CI.md file and update README reference
 - `bb34efd` Add CI/CD section to README documenting GitHub Actions workflows
 - `7a7ae49` Add GitHub Actions workflows for CMakePresets, Bazel, and Bazelisk builds
 - `3b9acaa` Update README with latest commit record
