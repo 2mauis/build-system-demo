@@ -153,6 +153,37 @@ SubClass pure virtual function implemented by SubObject1
 
 通过本项目，可以直观理解这些函数在继承和多态中的作用。
 
+## CI/CD
+
+本项目配置了GitHub Actions，支持三种构建方式的手动触发编译：
+
+### CMakePresets Workflow
+
+- **文件**：`.github/workflows/cmake-presets.yml`
+- **触发**：手动触发（workflow_dispatch）
+- **支持的Preset**：default, release, debug
+- **功能**：使用CMakePresets配置构建和测试
+
+### Bazel Workflow
+
+- **文件**：`.github/workflows/bazel.yml`
+- **触发**：手动触发（workflow_dispatch）
+- **功能**：使用Bazel直接构建和测试
+
+### Bazelisk Workflow
+
+- **文件**：`.github/workflows/bazelisk.yml`
+- **触发**：手动触发（workflow_dispatch）
+- **功能**：使用Bazelisk自动管理Bazel版本并构建测试
+
+### 如何使用
+
+1. 进入GitHub仓库的Actions标签页
+2. 选择想要的workflow
+3. 点击"Run workflow"按钮
+4. 根据需要调整输入参数
+5. 点击"Run workflow"开始构建
+
 ## Changelog
 
 ### Recent Commits
