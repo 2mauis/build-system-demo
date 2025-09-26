@@ -21,14 +21,14 @@ This project supports multiple build systems:
 - Build: `cmake --preset default && cmake --build --preset default`
 - Run: `./build/demo`
 
-Detailed information: [CMakePresets.md](doc/CMakePresets.md)
+Detailed information: [CMakePresets.md](doc/CMakePresets_EN.md)
 
 ### Using Bazel
-- Install Bazel or [Bazelisk](doc/Bazelisk.md) (recommended).
+- Install Bazel or [Bazelisk](doc/Bazelisk_EN.md) (recommended).
 - Build: `bazel build //:demo`
 - Run: `bazel run //:demo`
 
-Detailed information: [Bazel.md](doc/Bazel.md) and [Bazelisk.md](doc/Bazelisk.md)
+Detailed information: [Bazel.md](doc/Bazel_EN.md) and [Bazelisk.md](doc/Bazelisk_EN.md)
 
 ## Function Types Explanation
 
@@ -105,7 +105,7 @@ Pure virtual functions are declared as `virtual` and end with `= 0`, with no imp
 
 ## CI/CD
 
-Detailed CI/CD configuration and usage instructions: [CI.md](doc/CI.md)
+Detailed CI/CD configuration and usage instructions: [CI.md](doc/CI_EN.md)
 
 ## Changelog
 
