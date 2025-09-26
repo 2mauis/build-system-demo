@@ -1,5 +1,7 @@
 # Bazelisk 使用指南
 
+[![English](https://img.shields.io/badge/Language-English-blue.svg)](Bazelisk_EN.md) | [中文](Bazelisk.md)
+
 ## 什么是Bazelisk？
 
 Bazelisk是一个开源工具，用于自动管理和运行正确的Bazel版本。它是Bazel的版本管理器，类似于其他语言的版本管理器（如nvm for Node.js或rbenv for Ruby）。

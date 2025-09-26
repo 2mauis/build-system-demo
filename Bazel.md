@@ -1,5 +1,7 @@
 # Bazel 使用方式和原理
 
+[![English](https://img.shields.io/badge/Language-English-blue.svg)](Bazel_EN.md) | [中文](Bazel.md)
+
 ## 什么是Bazel？
 
 Bazel是一个开源的构建和测试工具，由Google开发。它支持多语言项目（C++、Java、Python等），强调可扩展性、性能和正确性。Bazel适用于大型代码库，能够处理复杂的依赖关系和并行构建。

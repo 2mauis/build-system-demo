@@ -1,8 +1,10 @@
-# C++ 类继承演示：纯虚函数、虚函数和普通函数
+# C++ 类继承演示：纯虚函数、虚函数和普通函数 (CMake/Bazel构建系统演示)
 
 > **本工程采用 Copilot Agent 模式构建并测试** - 整个项目（包括代码、构建系统、CI/CD、文档）均由Grok Code Fast (Preview) 模型自动生成和配置。
 
-本项目演示了C++中基类继承的概念，包括纯虚函数、虚函数和普通函数的使用方法和区别。通过具体的代码实例，展示这些函数在类层次结构中的行为。
+[![English](https://img.shields.io/badge/Language-English-blue.svg)](README_EN.md) | [中文](README.md)
+
+本项目演示了C++中基类继承的概念，包括纯虚函数、虚函数和普通函数的使用方法和区别。通过具体的代码实例，展示这些函数在类层次结构中的行为。同时演示了现代C++项目的完整构建系统配置，包括CMake、CMakePresets、Bazel、Bazelisk等多种构建工具。
 
 ## 项目结构
 
