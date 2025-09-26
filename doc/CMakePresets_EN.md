@@ -1,6 +1,6 @@
 # CMakePresets User Guide
 
-[![中文](https://img.shields.io/badge/Language-中文-red.svg)](doc/CMakePresets.md) | [English](doc/CMakePresets_EN.md)
+[![中文](https://img.shields.io/badge/Language-中文-red.svg)](CMakePresets.md) | [English](CMakePresets_EN.md)
 
 ## What is CMakePresets?
 
