@@ -188,6 +188,9 @@ SubClass pure virtual function implemented by SubObject1
 
 ### Recent Commits
 
+- `bb34efd` Add CI/CD section to README documenting GitHub Actions workflows
+- `7a7ae49` Add GitHub Actions workflows for CMakePresets, Bazel, and Bazelisk builds
+- `3b9acaa` Update README with latest commit record
 - `5960f71` Add Bazelisk documentation and update README with Bazelisk link
 - `e2a25cb` Add CMakePresets, CTest integration, and documentation updates
 - `49744ee` Initial commit: C++ class inheritance demo with CMake and Bazel build support
