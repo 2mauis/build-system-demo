@@ -161,6 +161,8 @@ SubClass pure virtual function implemented by SubObject1
 
 ### Recent Commits
 
+- `7422cfa` Add .clang-tidy config file and update workflow to use it
+- `6d53654` Update changelog with new static analysis workflows
 - `62fa561` Add Clang-Tidy and Coverity SCA workflows and update CI documentation
 - `21c47a0` Final changelog update
 - `a891870` Update CI documentation to reflect test target changes
