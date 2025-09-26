@@ -1,26 +1,26 @@
-# CMakePresets 使用指南
+# CMakePresets User Guide
 
-[![English](https://img.shields.io/badge/Language-English-blue.svg)](doc/CMakePresets_EN.md) | [中文](doc/CMakePresets.md)
+[![中文](https://img.shields.io/badge/Language-中文-red.svg)](doc/CMakePresets.md) | [English](doc/CMakePresets_EN.md)
 
-## 什么是CMakePresets？
+## What is CMakePresets?
 
-CMakePresets是CMake 3.19及以上版本引入的功能，用于定义和管理构建配置的预设。它允许用户快速切换不同的构建环境、生成器和选项，而无需手动指定命令行参数。
+CMakePresets is a feature introduced in CMake 3.19 and later versions for defining and managing build configuration presets. It allows users to quickly switch between different build environments, generators, and options without manually specifying command-line parameters.
 
-### 优势
-- **简化配置**：预定义常用设置，避免重复输入。
-- **一致性**：团队共享标准配置。
-- **灵活性**：支持继承和条件配置。
-- **跨平台**：适用于不同操作系统和工具链。
+### Advantages
+- **Simplified Configuration**: Predefine common settings to avoid repetitive input.
+- **Consistency**: Teams can share standard configurations.
+- **Flexibility**: Supports inheritance and conditional configurations.
+- **Cross-platform**: Works across different operating systems and toolchains.
 
-## 文件结构
+## File Structure
 
-CMakePresets.json 文件包含：
-- **version**: 预设格式版本（推荐3）。
-- **configurePresets**: 配置预设，定义生成器、构建目录、缓存变量等。
-- **buildPresets**: 构建预设，引用配置预设并定义构建选项。
-- **testPresets**: 测试预设，定义CTest选项（CMake 3.21+）。
+The CMakePresets.json file contains:
+- **version**: Preset format version (version 3 recommended).
+- **configurePresets**: Configure presets that define generators, build directories, cache variables, etc.
+- **buildPresets**: Build presets that reference configure presets and define build options.
+- **testPresets**: Test presets that define CTest options (CMake 3.21+).
 
-## 项目中的CMakePresets.json
+## CMakePresets.json in the Project
 
 ```json
 {
@@ -103,18 +103,18 @@ CMakePresets.json 文件包含：
 }
 ```
 
-### 预设说明
-- **configurePresets**: 定义构建配置。
-- **buildPresets**: 定义构建选项。
-- **testPresets**: 定义测试选项，`outputOnFailure`在失败时输出详细信息。
+### Preset Descriptions
+- **configurePresets**: Define build configurations.
+- **buildPresets**: Define build options.
+- **testPresets**: Define test options, `outputOnFailure` outputs detailed information on failure.
 
-## 使用方法
+## Usage
 
-### 1. 列出预设
+### 1. List Presets
 ```bash
 cmake --list-presets
 ```
-输出：
+Output:
 ```
 Available configure presets:
   "default"        - Default Config
@@ -133,81 +133,81 @@ Available test presets:
   "release"        -
 ```
 
-### 2. 配置项目
+### 2. Configure Project
 ```bash
 cmake --preset <preset-name>
 ```
 
-### 3. 构建项目
+### 3. Build Project
 ```bash
 cmake --build --preset <preset-name>
 ```
 
-### 4. 运行测试
+### 4. Run Tests
 ```bash
 ctest --preset <preset-name>
 ```
 
-### 5. 运行可执行文件
+### 5. Run Executable
 ```bash
-./build/demo  # 对于Ninja预设
-./build-make/demo  # 对于Unix Makefiles预设
+./build/demo  # For Ninja presets
+./build-make/demo  # For Unix Makefiles presets
 ```
 
-## 示例输出
+## Example Output
 
-### 运行测试
+### Running Tests
 ```bash
 $ ctest --preset release
 No tests were found!!!
 ```
 
-## 注意事项
-- **testPresets**: 支持，需要项目有CTest测试（在CMakeLists.txt中定义）。
-- **run**: 不支持直接运行可执行文件，需手动或脚本实现。
-- 需要CMake 3.21+ for testPresets。
-- 预设名称区分大小写。
-- `inherits`允许预设继承，减少重复。
-- 构建目录由`binaryDir`指定，避免污染源目录。
+## Notes
+- **testPresets**: Supported, requires the project to have CTest tests (defined in CMakeLists.txt).
+- **run**: Does not support directly running executables, needs to be done manually or via scripts.
+- Requires CMake 3.21+ for testPresets.
+- Preset names are case-sensitive.
+- `inherits` allows presets to inherit from others, reducing duplication.
+- Build directory is specified by `binaryDir` to avoid polluting the source directory.
 
-## add_test 原理
+## add_test Principle
 
-`add_test` 是CMake中的命令，用于定义CTest测试。
+`add_test` is a CMake command used to define CTest tests.
 
-### 语法和参数
+### Syntax and Parameters
 ```cmake
 add_test(NAME <test_name> COMMAND <executable> [<arg1> <arg2> ...])
 ```
-- **NAME <test_name>**: 测试的唯一名称。
-- **COMMAND <executable>**: 要运行的可执行文件或命令。
+- **NAME <test_name>**: Unique name for the test.
+- **COMMAND <executable>**: Executable or command to run.
 
-### 工作原理
-1. **定义测试**：`add_test` 在CMake配置时注册一个测试到CTest系统中。
-2. **执行机制**：
-   - 当运行 `ctest` 时，CTest会遍历所有定义的测试。
-   - 对于每个测试，CTest在构建目录中执行指定的命令。
-   - 测试进程的**退出码**决定结果：
-     - **退出码 0**：测试通过（PASS）。
-     - **退出码非0**：测试失败（FAIL）。
-3. **输出和报告**：
-   - CTest收集所有测试结果，显示通过/失败数量。
-   - 如果失败，可配置输出详细错误信息（在testPresets中设置 `outputOnFailure: true`）。
+### How It Works
+1. **Define Tests**: `add_test` registers a test with the CTest system during CMake configuration.
+2. **Execution Mechanism**:
+   - When `ctest` is run, CTest iterates through all defined tests.
+   - For each test, CTest executes the specified command in the build directory.
+   - The test process's **exit code** determines the result:
+     - **Exit code 0**: Test passes (PASS).
+     - **Exit code non-0**: Test fails (FAIL).
+3. **Output and Reporting**:
+   - CTest collects all test results and displays pass/fail counts.
+   - If failures occur, detailed error output can be configured (set `outputOnFailure: true` in testPresets).
 
-### 在项目中的应用
-- **命令**：`add_test(NAME RunDemo COMMAND demo)`
-- **执行**：运行 `./demo`（在build目录中）。
-- **检查**：如果 `demo` 正常运行并退出（无崩溃或错误），退出码为0，测试通过。
-- **结果**：`ctest --preset release` 输出测试通过。
+### Application in the Project
+- **Command**: `add_test(NAME RunDemo COMMAND demo)`
+- **Execution**: Runs `./demo` (in the build directory).
+- **Check**: If `demo` runs normally and exits (no crashes or errors), exit code is 0, test passes.
+- **Result**: `ctest --preset release` outputs test passed.
 
-CMakePresets支持test，但不支持run。
+CMakePresets supports test, but not run.
 
-## 使用方法
+## Usage
 
-### 1. 列出预设
+### 1. List Presets
 ```bash
 cmake --list-presets
 ```
-输出：
+Output:
 ```
 Available configure presets:
   "default"        - Default Config
@@ -222,33 +222,33 @@ Available build presets:
   "unix-makefiles" -
 ```
 
-### 2. 配置项目
+### 2. Configure Project
 ```bash
 cmake --preset <preset-name>
 ```
-例如：
+Example:
 ```bash
 cmake --preset release
 ```
 
-### 3. 构建项目
+### 3. Build Project
 ```bash
 cmake --build --preset <preset-name>
 ```
-例如：
+Example:
 ```bash
 cmake --build --preset release
 ```
 
-### 4. 运行可执行文件
+### 4. Run Executable
 ```bash
-./build/demo  # 对于Ninja预设
-./build-make/demo  # 对于Unix Makefiles预设
+./build/demo  # For Ninja presets
+./build-make/demo  # For Unix Makefiles presets
 ```
 
-## 示例输出
+## Example Output
 
-### 配置和构建Release版本
+### Configure and Build Release Version
 ```bash
 $ cmake --preset release
 -- The C compiler identification is AppleClang 16.0.0.16000026
@@ -274,7 +274,7 @@ $ cmake --build --preset release
 [4/4] Linking CXX executable demo
 ```
 
-### 运行程序
+### Run Program
 ```bash
 $ ./build/demo
 BaseClass constructor called for SubObject1
@@ -290,11 +290,11 @@ SubClass virtual function overridden by SubObject1
 SubClass pure virtual function implemented by SubObject1
 ```
 
-## 注意事项
-- 需要CMake 3.19+。
-- 预设名称区分大小写。
-- `inherits`允许预设继承，减少重复。
-- 构建目录由`binaryDir`指定，避免污染源目录。
-- 对于大型项目，可添加更多预设，如交叉编译或特定工具链。
+## Notes
+- Requires CMake 3.19+.
+- Preset names are case-sensitive.
+- `inherits` allows presets to inherit from others, reducing duplication.
+- Build directory is specified by `binaryDir` to avoid polluting the source directory.
+- For large projects, more presets can be added, such as cross-compilation or specific toolchains.
 
-CMakePresets简化了构建流程，提高了开发效率。
+CMakePresets simplifies the build process and improves development efficiency.
