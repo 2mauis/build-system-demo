@@ -1,0 +1,39 @@
+# Build directories
+build/
+bazel-*/
+bazel-bin/
+bazel-class_test/
+bazel-genfiles/
+bazel-out/
+bazel-testlogs/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# Executables
+demo
+*.exe
+*.out
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+
+# Bazel lock files
+MODULE.bazel.lock
