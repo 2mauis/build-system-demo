@@ -1,6 +1,7 @@
 # Build directories
 build/
 bazel-*/
+**/bazel-*/
 bazel-bin/
 bazel-class_test/
 bazel-genfiles/
