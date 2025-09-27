@@ -220,28 +220,3 @@ SubClass pure virtual function implemented by SubObject1
 
 详细的CI/CD配置和使用说明请参考 [CI.md](doc/CI.md)。
 
-## Changelog
-
-### Recent Commits
-
-- `910d92d` Add English documentation and language switch buttons to all docs
-- `c9075d5` Update changelog with AI model specification
-- `4ceed06` Update AI development note to specify Copilot Agent mode with Grok Code Fast model
-- `f9246dc` Update changelog with license addition
-- `d73cb36` Add BSD-3-Clause license and note about agentic AI development
-- `ea4d704` Final changelog update with clang-tidy config
-- `7422cfa` Add .clang-tidy config file and update workflow to use it
-- `6d53654` Update changelog with new static analysis workflows
-- `62fa561` Add Clang-Tidy and Coverity SCA workflows and update CI documentation
-- `21c47a0` Final changelog update
-- `a891870` Update CI documentation to reflect test target changes
-- `04a2726` Update changelog with workflow fix
-- `a6532f9` Fix Bazel workflows: remove default test target that doesn't exist
-- `c3ba48f` Update changelog with latest commit
-- `4e5423e` Extract CI/CD documentation to separate CI.md file and update README reference
-- `bb34efd` Add CI/CD section to README documenting GitHub Actions workflows
-- `7a7ae49` Add GitHub Actions workflows for CMakePresets, Bazel, and Bazelisk builds
-- `3b9acaa` Update README with latest commit record
-- `5960f71` Add Bazelisk documentation and update README with Bazelisk link
-- `e2a25cb` Add CMakePresets, CTest integration, and documentation updates
-- `49744ee` Initial commit: C++ class inheritance demo with CMake and Bazel build support
