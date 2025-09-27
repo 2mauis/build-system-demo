@@ -17,6 +17,13 @@ int main() {
     std::string key = "key2";
     sub->addToMap(std::move(key), std::move(child));
 
+    //添加第二个对象
+    auto child2 = std::make_shared<SubClass>("SubObject3"sv);
+    sub->addToMap("key3", child2); // 这里不使用 std::move
+    // 直接传递 child2，仍然有效
+    // child2 仍然有效，可以继续使用
+
+
     // 从map获取
     if (auto retrieved = sub->getFromMap("key2"); retrieved) {
         std::cout << "Retrieved object from map" << std::endl;
