@@ -34,9 +34,9 @@ jobs:
 
     - name: Build
       run: |
-        bazel build ${{ inputs.target }}
+        bazel build ${{ github.event.inputs.target }}
 
     - name: Test
-      if: inputs.test_target != ''
+      if: ${{ github.event.inputs.test_target != '' }}
       run: |
-        bazel test ${{ inputs.test_target }}
+        bazel test ${{ github.event.inputs.test_target }}
