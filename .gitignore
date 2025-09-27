@@ -2,11 +2,12 @@
 build/
 bazel-*/
 **/bazel-*/
-bazel-bin/
-bazel-class_test/
-bazel-genfiles/
-bazel-out/
-bazel-testlogs/
+bazel-*
+bazel-bin
+bazel-class_test
+bazel-genfiles
+bazel-out
+bazel-testlogs
 
 # CMake generated files
 CMakeCache.txt
