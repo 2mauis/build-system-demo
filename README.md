@@ -33,7 +33,7 @@ cmake -S . -B build && cmake --build build -j 6
 
 示例说明：`-S .` 指定源码目录，`-B build` 指定输出目录；`-j 6` 为并行构建的线程数，按需调整。
 
-更多手动构建的细节与排错见：[doc/BUILD.md](doc/BUILD.md)
+更多手动构建的细节与排错见：[doc/CMakeBuild.md](doc/CMakeBuild.md)
 
 #### 使用 CMakePresets（推荐用于 CI / 一致性）
 
