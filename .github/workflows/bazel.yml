@@ -11,8 +11,15 @@ on:
       test_target:
         description: 'Bazel test target'
         required: false
-        default: ''
+        # Provide a helpful example so the Run workflow UI isn't blank.
+        # Use //... to indicate "all packages" (won't run tests unless run_tests is true).
+        default: '//...'
         type: string
+      run_tests:
+        description: 'Set to true to run tests using the test_target. Prevents accidental test runs when left false.'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   build:
@@ -37,6 +44,6 @@ jobs:
         bazel build ${{ github.event.inputs.target }}
 
     - name: Test
-      if: ${{ github.event.inputs.test_target != '' }}
+      if: ${{ github.event.inputs.run_tests == 'true' }}
       run: |
         bazel test ${{ github.event.inputs.test_target }}
