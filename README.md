@@ -1,6 +1,8 @@
+
+
 # C++ 类继承演示：纯虚函数、虚函数和普通函数 (CMake/Bazel构建系统演示)
 
-> **本工程采用 Copilot Agent 模式构建并测试** - 整个项目（包括代码、构建系统、CI/CD、文档）均由Grok Code Fast (Preview) 模型自动生成和配置。
+> **本工程采用 Copilot Agent 模式构建并测试** - 整个项目（包括代码、构建系统、CI/CD、文档）均由Grok Code Fast (Preview) 模型和GPT-5 Mini自动生成和配置。
 
 [![English](https://img.shields.io/badge/Language-English-blue.svg)](README_EN.md) | [中文](README.md)
 
@@ -15,13 +17,70 @@
 ## 构建和运行
 
 ### 使用CMake
-- 安装CMake 3.19+。
-- 配置：`cmake --preset release`
-- 构建：`cmake --build --preset release`
-- 测试：`ctest --preset release`
-- 运行：`./build/demo`
 
-详细请参考 [CMakePresets.md](doc/CMakePresets.md)。
+#### 先决条件
+
+- 已安装 CMake（推荐 3.19 及更高）。
+- 已安装一个兼容的 C++ 编译器（如 clang 或 gcc）和必要的系统工具链。
+
+#### 快速开始（手动构建）
+
+这是最简单、跨平台的手动构建流程，将所有中间产物放到 `build/` 目录：
+
+```bash
+cmake -S . -B build && cmake --build build -j 6
+```
+
+示例说明：`-S .` 指定源码目录，`-B build` 指定输出目录；`-j 6` 为并行构建的线程数，按需调整。
+
+更多手动构建的细节与排错见：[doc/BUILD.md](doc/BUILD.md)
+
+#### 使用 CMakePresets（推荐用于 CI / 一致性）
+
+仓库也可能提供 CMakePresets（见 `doc/CMakePresets.md`），使用预设可以让配置和构建在本地与 CI 之间保持一致：
+
+```bash
+cmake --preset release
+cmake --build --preset release
+```
+
+#### 构建类型
+
+你可以通过 `-DCMAKE_BUILD_TYPE=Debug|Release|RelWithDebInfo` 指定单配置生成器的构建类型，或使用预设在多配置环境中控制行为。
+
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j 6
+```
+
+#### 测试
+
+构建后运行测试：
+
+```bash
+ctest --test-dir build
+```
+
+如果使用 presets：
+
+```bash
+ctest --preset release
+```
+
+#### 运行
+
+构建完成后可直接运行可执行文件：
+
+```bash
+./build/demo
+```
+
+#### 常见问题与故障排查
+
+- 找不到头文件或库：检查 CMake 输出的 include 与 link 路径，确保依赖已安装或正确设置路径。
+- 构建失败并显示编译器错误：先尝试清理构建目录（`rm -rf build`）并重新配置；在 macOS 上确认 Xcode 命令行工具已安装。
+- 想要更多构建输出：在配置时使用 `-DCMAKE_VERBOSE_MAKEFILE=ON`，或者 `cmake --build build --verbose`。
+
+更多关于 presets 和示例请见：[doc/CMakePresets.md](doc/CMakePresets.md)
 
 ### 使用Bazel
 

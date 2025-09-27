@@ -2,32 +2,32 @@
 #include <iostream>
 
 int main() {
-    // 创建SubClass实例
-    std::shared_ptr<SubClass> sub = std::make_shared<SubClass>("SubObject1");
+    using namespace std::literals;
 
-    // 调用基类函数
+    // 创建SubClass实例
+    auto sub = std::make_shared<SubClass>("SubObject1"sv);
+
+    // 调用基类和子类函数
     sub->normalFunction();
     sub->virtualFunction();
     sub->pureVirtualFunction();
 
-    // 添加到map - 避免循环引用，不要添加自己
-    sub->addToMap("key2", std::make_shared<SubClass>("SubObject2"));
+    // 添加到map（构造 shared_ptr 后通过 std::move 传入以使用移动语义）
+    auto child = std::make_shared<SubClass>("SubObject2"sv);
+    std::string key = "key2";
+    sub->addToMap(std::move(key), std::move(child));
 
     // 从map获取
-    std::shared_ptr<BaseClass> retrieved = sub->getFromMap("key2");
-    if (retrieved) {
+    if (auto retrieved = sub->getFromMap("key2"); retrieved) {
         std::cout << "Retrieved object from map" << std::endl;
         retrieved->normalFunction();
         retrieved->virtualFunction();
         retrieved->pureVirtualFunction();
     }
 
-    // 手动释放引用以触发析构
+    // 手动释放引用以触发析构（可选）
     sub.reset();
-    retrieved.reset();
 
-    // 强制刷新输出缓冲区
     std::cout << std::flush;
-
     return 0;
 }
