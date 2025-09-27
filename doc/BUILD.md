@@ -65,4 +65,4 @@ rm -rf build && mkdir build
 
 ---
 
-更多 CMake 高级用法见仓库内其他文档，如 `doc/CMakePresets.md`。
+更多 CMake 高级用法与预设示例，请参见：[doc/CMakePresets.md](doc/CMakePresets.md)
